@@ -1,0 +1,95 @@
+{
+	"name": "DS_SQL_CC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_CC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PkControlCargas",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Proceso",
+				"type": "varchar"
+			},
+			{
+				"name": "SistemaFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "PropietarioFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "RutaArchivoFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "NombreArchivoFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "DelimitadorArchivoFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "ColumnasArchivoFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "FiltrosArchivoFuente",
+				"type": "varchar"
+			},
+			{
+				"name": "RutaArchivoDestino",
+				"type": "varchar"
+			},
+			{
+				"name": "NombreArchivoDestino",
+				"type": "varchar"
+			},
+			{
+				"name": "ExtencionArchivoDestino",
+				"type": "varchar"
+			},
+			{
+				"name": "DelimitadorArchivoDestino",
+				"type": "varchar"
+			},
+			{
+				"name": "IndicadorFact",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IndicadorCargaActiva",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FechaActualizacion",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "NombreTablaStaging",
+				"type": "varchar"
+			},
+			{
+				"name": "EsquemaTablaStaging",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "conf",
+			"table": "ControlCargas"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

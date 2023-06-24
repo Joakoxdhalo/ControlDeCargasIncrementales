@@ -1,0 +1,9 @@
+{
+	"name": "ADF-ModernaDWH-Prod",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "146af38b-42a5-4004-9b0a-c860f802abb7",
+		"tenantId": "d7060bcc-bb26-4708-a91d-88362a86ae35"
+	}
+}

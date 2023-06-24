@@ -1,0 +1,12 @@
+{
+	"name": "ARQLR02-Shared",
+	"properties": {
+		"type": "SelfHosted",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/edff7a7d-111f-466f-9d0b-4f96151ffc5c/resourcegroups/ModernaRG01/providers/Microsoft.DataFactory/factories/ModernaDataFactory02/integrationruntimes/ArqIR02",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}
