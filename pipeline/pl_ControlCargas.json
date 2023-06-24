@@ -25,8 +25,12 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "DS_SQL_CC",
-						"type": "DatasetReference"
+						"referenceName": "DS_SQL_TABLES",
+						"type": "DatasetReference",
+						"parameters": {
+							"Schema": "conf",
+							"Table": "ControlCargas"
+						}
 					},
 					"firstRowOnly": false
 				}
@@ -80,7 +84,7 @@
 										},
 										"userProperties": [],
 										"linkedServiceName": {
-											"referenceName": "LS_SQL_CC",
+											"referenceName": "LS_SQL",
 											"type": "LinkedServiceReference"
 										},
 										"typeProperties": {
@@ -117,11 +121,12 @@
 										"userProperties": [],
 										"typeProperties": {
 											"source": {
-												"type": "SapHanaSource",
-												"query": {
+												"type": "AzureSqlSource",
+												"sqlReaderQuery": {
 													"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().BaseDatosFuente}.@{item().ArchivoFuente}\n@{replace(\n            replace(\n                        item().FiltrosArchivoFuenteParsed, '{variableDF1}', substring(variables('TimeNow'), 0, 8)\n                    ), '{variableDF2}', substring(variables('TimeNow'), 8, 6)\n        )\n}",
 													"type": "Expression"
 												},
+												"queryTimeout": "02:00:00",
 												"partitionOption": "None"
 											},
 											"sink": {
@@ -145,11 +150,11 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "DS_SAP",
+												"referenceName": "DS_SQL_TABLES",
 												"type": "DatasetReference",
 												"parameters": {
-													"Database": {
-														"value": "@{item().BaseDatosFuente}",
+													"Schema": {
+														"value": "@{item().EsquemaFuente}",
 														"type": "Expression"
 													},
 													"Table": {
@@ -269,7 +274,7 @@
 											}
 										},
 										"linkedServiceName": {
-											"referenceName": "LS_SQL_CC",
+											"referenceName": "LS_SQL",
 											"type": "LinkedServiceReference"
 										}
 									},
@@ -355,7 +360,7 @@
 											}
 										},
 										"linkedServiceName": {
-											"referenceName": "LS_SQL_CC",
+											"referenceName": "LS_SQL",
 											"type": "LinkedServiceReference"
 										}
 									},
@@ -466,7 +471,7 @@
 											}
 										},
 										"linkedServiceName": {
-											"referenceName": "LS_SQL_CC",
+											"referenceName": "LS_SQL",
 											"type": "LinkedServiceReference"
 										}
 									},
@@ -546,7 +551,7 @@
 											}
 										},
 										"linkedServiceName": {
-											"referenceName": "LS_SQL_CC",
+											"referenceName": "LS_SQL",
 											"type": "LinkedServiceReference"
 										}
 									},
@@ -564,11 +569,12 @@
 										"userProperties": [],
 										"typeProperties": {
 											"source": {
-												"type": "SapHanaSource",
-												"query": {
-													"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().BaseDatosFuente}.@{item().ArchivoFuente}",
+												"type": "AzureSqlSource",
+												"sqlReaderQuery": {
+													"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().EsquemaFuente}.@{item().ArchivoFuente}",
 													"type": "Expression"
 												},
+												"queryTimeout": "02:00:00",
 												"partitionOption": "None"
 											},
 											"sink": {
@@ -592,11 +598,11 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "DS_SAP",
+												"referenceName": "DS_SQL_TABLES",
 												"type": "DatasetReference",
 												"parameters": {
-													"Database": {
-														"value": "@{item().BaseDatosFuente}",
+													"Schema": {
+														"value": "@{item().EsquemaFuente}",
 														"type": "Expression"
 													},
 													"Table": {
