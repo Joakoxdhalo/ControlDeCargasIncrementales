@@ -647,15 +647,15 @@
 		"parameters": {
 			"Proceso": {
 				"type": "string",
-				"defaultValue": "Comercial"
+				"defaultValue": "LiderTecnico"
 			},
 			"SistemaFuente": {
 				"type": "string",
-				"defaultValue": "HANA"
+				"defaultValue": "SQL"
 			},
 			"Subproceso": {
 				"type": "string",
-				"defaultValue": "Subpr_1"
+				"defaultValue": "Subpr_2"
 			}
 		},
 		"variables": {
