@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-eus2-ltexam-joaco-dev"
+		},
+		"LS_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_connectionString": {
+			"value": ""
+		},
+		"LS_ADLS_properties_typeProperties_url": {
+			"value": "https://dlsmodernadwhprod.dfs.core.windows.net/"
+		},
+		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/edff7a7d-111f-466f-9d0b-4f96151ffc5c/resourcegroups/ModernaRG01/providers/Microsoft.DataFactory/factories/ModernaDataFactory02/integrationruntimes/ArqIR02"
+		}
+	}
+}
