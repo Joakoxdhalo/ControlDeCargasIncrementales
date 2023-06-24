@@ -1,12 +1,12 @@
 {
-	"name": "DS_SAP",
+	"name": "DS_SQL_TABLES",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_SAP",
+			"referenceName": "LS_SQL",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"Database": {
+			"Schema": {
 				"type": "string"
 			},
 			"Table": {
@@ -14,11 +14,11 @@
 			}
 		},
 		"annotations": [],
-		"type": "SapHanaTable",
+		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
 			"schema": {
-				"value": "@dataset().Database",
+				"value": "@dataset().Schema",
 				"type": "Expression"
 			},
 			"table": {
@@ -26,6 +26,5 @@
 				"type": "Expression"
 			}
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
