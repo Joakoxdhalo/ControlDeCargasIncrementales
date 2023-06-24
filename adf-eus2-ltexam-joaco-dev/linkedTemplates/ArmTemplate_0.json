@@ -17,7 +17,7 @@
 		},
 		"LS_ADLS_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://dlsmodernadwhprod.dfs.core.windows.net/"
+			"defaultValue": "https://adlseus2ltexamjoacodev.dfs.core.windows.net/"
 		},
 		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",
@@ -75,41 +75,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_TABLES')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_SQL",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Schema": {
-						"type": "string"
-					},
-					"Table": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": {
-						"value": "@dataset().Schema",
-						"type": "Expression"
-					},
-					"table": {
-						"value": "@dataset().Table",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DS_ADLS_PARQUET')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -156,6 +121,41 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_SQL_TABLES')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_SQL",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Schema": {
+						"type": "string"
+					},
+					"Table": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().Schema",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().Table",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]"
 			]
 		},
 		{
@@ -813,15 +813,15 @@
 				"parameters": {
 					"Proceso": {
 						"type": "string",
-						"defaultValue": "Comercial"
+						"defaultValue": "LiderTecnico"
 					},
 					"SistemaFuente": {
 						"type": "string",
-						"defaultValue": "HANA"
+						"defaultValue": "SQL"
 					},
 					"Subproceso": {
 						"type": "string",
-						"defaultValue": "Subpr_1"
+						"defaultValue": "Subpr_2"
 					}
 				},
 				"variables": {

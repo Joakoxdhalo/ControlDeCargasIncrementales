@@ -12,7 +12,7 @@
 			"value": ""
 		},
 		"LS_ADLS_properties_typeProperties_url": {
-			"value": "https://dlsmodernadwhprod.dfs.core.windows.net/"
+			"value": "https://adlseus2ltexamjoacodev.dfs.core.windows.net/"
 		},
 		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 			"value": "/subscriptions/edff7a7d-111f-466f-9d0b-4f96151ffc5c/resourcegroups/ModernaRG01/providers/Microsoft.DataFactory/factories/ModernaDataFactory02/integrationruntimes/ArqIR02"

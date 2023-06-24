@@ -17,7 +17,7 @@
 		},
 		"LS_ADLS_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://dlsmodernadwhprod.dfs.core.windows.net/"
+			"defaultValue": "https://adlseus2ltexamjoacodev.dfs.core.windows.net/"
 		},
 		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",

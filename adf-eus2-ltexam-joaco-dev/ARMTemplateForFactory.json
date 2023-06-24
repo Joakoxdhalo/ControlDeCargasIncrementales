@@ -17,7 +17,7 @@
 		},
 		"LS_ADLS_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://dlsmodernadwhprod.dfs.core.windows.net/"
+			"defaultValue": "https://adlseus2ltexamjoacodev.dfs.core.windows.net/"
 		},
 		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",
@@ -683,15 +683,15 @@
 				"parameters": {
 					"Proceso": {
 						"type": "string",
-						"defaultValue": "Comercial"
+						"defaultValue": "LiderTecnico"
 					},
 					"SistemaFuente": {
 						"type": "string",
-						"defaultValue": "HANA"
+						"defaultValue": "SQL"
 					},
 					"Subproceso": {
 						"type": "string",
-						"defaultValue": "Subpr_1"
+						"defaultValue": "Subpr_2"
 					}
 				},
 				"variables": {
@@ -709,6 +709,55 @@
 				"[concat(variables('factoryId'), '/datasets/DS_SQL_TABLES')]",
 				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]",
 				"[concat(variables('factoryId'), '/datasets/DS_ADLS_PARQUET')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_PARQUET')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Ruta": {
+						"type": "string"
+					},
+					"Archivo": {
+						"type": "string"
+					},
+					"Container": {
+						"type": "string"
+					},
+					"Extension": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@{dataset().Archivo}.@{dataset().Extension}",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().Ruta",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().Container",
+							"type": "Expression"
+						}
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS')]"
 			]
 		},
 		{
@@ -791,55 +840,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_PARQUET')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Ruta": {
-						"type": "string"
-					},
-					"Archivo": {
-						"type": "string"
-					},
-					"Container": {
-						"type": "string"
-					},
-					"Extension": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@{dataset().Archivo}.@{dataset().Extension}",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().Ruta",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().Container",
-							"type": "Expression"
-						}
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS')]"
-			]
 		}
 	]
 }
