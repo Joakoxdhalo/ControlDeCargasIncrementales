@@ -198,7 +198,7 @@
 												],
 												"outputs": [
 													{
-														"referenceName": "DS_ADLS",
+														"referenceName": "DS_ADLS_PARQUET",
 														"type": "DatasetReference",
 														"parameters": {
 															"Ruta": {
@@ -646,23 +646,23 @@
 												],
 												"outputs": [
 													{
-														"referenceName": "DS_ADLS",
+														"referenceName": "DS_ADLS_PARQUET",
 														"type": "DatasetReference",
 														"parameters": {
 															"Ruta": {
-																"value": "@item().RutaArchivoDestino",
+																"value": "@{item().RutaArchivoDestino}",
 																"type": "Expression"
 															},
 															"Archivo": {
-																"value": "@item().ArchivoDestino",
+																"value": "@{item().ArchivoDestino}",
 																"type": "Expression"
 															},
 															"Container": {
-																"value": "@item().ContenedorDestino",
+																"value": "@{item().ContenedorDestino}",
 																"type": "Expression"
 															},
 															"Extension": {
-																"value": "@item().ExtensionArchivoDestino",
+																"value": "@{item().ExtensionArchivoDestino}",
 																"type": "Expression"
 															}
 														}
@@ -699,62 +699,16 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "Orquestador"
+				},
 				"annotations": [],
 				"lastPublishTime": "2023-06-23T15:49:48Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_SQL_TABLES')]",
 				"[concat(variables('factoryId'), '/linkedServices/LS_SQL')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Ruta": {
-						"type": "string"
-					},
-					"Archivo": {
-						"type": "string"
-					},
-					"Container": {
-						"type": "string"
-					},
-					"Extension": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": {
-							"value": "@{dataset().Archivo}.@{dataset().Extension}",
-							"type": "Expression"
-						},
-						"folderPath": {
-							"value": "@dataset().Ruta",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().Container",
-							"type": "Expression"
-						}
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS')]"
+				"[concat(variables('factoryId'), '/datasets/DS_ADLS_PARQUET')]"
 			]
 		},
 		{
@@ -837,6 +791,55 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLS_PARQUET')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Ruta": {
+						"type": "string"
+					},
+					"Archivo": {
+						"type": "string"
+					},
+					"Container": {
+						"type": "string"
+					},
+					"Extension": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@{dataset().Archivo}.@{dataset().Extension}",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().Ruta",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().Container",
+							"type": "Expression"
+						}
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLS')]"
+			]
 		}
 	]
 }
