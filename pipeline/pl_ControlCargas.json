@@ -166,7 +166,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "DS_ADLS",
+												"referenceName": "DS_ADLS_PARQUET",
 												"type": "DatasetReference",
 												"parameters": {
 													"Ruta": {
@@ -614,23 +614,23 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "DS_ADLS",
+												"referenceName": "DS_ADLS_PARQUET",
 												"type": "DatasetReference",
 												"parameters": {
 													"Ruta": {
-														"value": "@item().RutaArchivoDestino",
+														"value": "@{item().RutaArchivoDestino}",
 														"type": "Expression"
 													},
 													"Archivo": {
-														"value": "@item().ArchivoDestino",
+														"value": "@{item().ArchivoDestino}",
 														"type": "Expression"
 													},
 													"Container": {
-														"value": "@item().ContenedorDestino",
+														"value": "@{item().ContenedorDestino}",
 														"type": "Expression"
 													},
 													"Extension": {
-														"value": "@item().ExtensionArchivoDestino",
+														"value": "@{item().ExtensionArchivoDestino}",
 														"type": "Expression"
 													}
 												}
