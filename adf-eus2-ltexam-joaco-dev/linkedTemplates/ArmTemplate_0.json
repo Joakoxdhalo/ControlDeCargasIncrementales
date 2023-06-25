@@ -285,7 +285,7 @@
 													"source": {
 														"type": "AzureSqlSource",
 														"sqlReaderQuery": {
-															"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().BaseDatosFuente}.@{item().ArchivoFuente}\n@{replace(\n            replace(\n                        item().FiltrosArchivoFuenteParsed, '{variableDF1}', substring(variables('TimeNow'), 0, 8)\n                    ), '{variableDF2}', substring(variables('TimeNow'), 8, 6)\n        )\n}",
+															"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().EsquemaFuente}.@{item().ArchivoFuente}\n@{replace(\n            replace(\n                        item().FiltrosArchivoFuenteParsed, '{variableDF1}', substring(variables('TimeNow'), 0, 8)\n                    ), '{variableDF2}', substring(variables('TimeNow'), 8, 6)\n        )\n}",
 															"type": "Expression"
 														},
 														"queryTimeout": "02:00:00",
