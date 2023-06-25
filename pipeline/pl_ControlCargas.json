@@ -92,7 +92,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "UPDATE conf.ControlCargas set ValorCampoDelta1 = '@{substring(variables('TimeNow'), 0, 8)}', ValorCampoDelta2 = '@{substring(variables('TimeNow'), 8, 6)}'\nWHERE PkControlCargas = '@{item().PkControlCargas}'\nAND Proceso = '@{item().Proceso}'\nAND Subproceso = '@{item().Subproceso}'\nAND SistemaFuente = '@{item().SistemaFuente}'",
+														"value": "UPDATE conf.ControlCargas set ValorCampoDelta1 = '@{variables('TimeNow')}'\n\nWHERE PkControlCargas = '@{item().PkControlCargas}'\nAND Proceso = '@{item().Proceso}'\nAND Subproceso = '@{item().Subproceso}'\nAND SistemaFuente = '@{item().SistemaFuente}'",
 														"type": "Expression"
 													}
 												}
@@ -123,7 +123,7 @@
 											"source": {
 												"type": "AzureSqlSource",
 												"sqlReaderQuery": {
-													"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().EsquemaFuente}.@{item().ArchivoFuente}\n@{replace(\n            replace(\n                        item().FiltrosArchivoFuenteParsed, '{variableDF1}', substring(variables('TimeNow'), 0, 8)\n                    ), '{variableDF2}', substring(variables('TimeNow'), 8, 6)\n        )\n}",
+													"value": "SELECT @{item().ColumnasArchivoFuente}\nFROM\n@{item().EsquemaFuente}.@{item().ArchivoFuente}\n@{replace(            \n            item().FiltrosArchivoFuenteParsed, '{variableDF1}', concat('''', variables('TimeNow'), '''')\n        )\n}",
 													"type": "Expression"
 												},
 												"queryTimeout": "02:00:00",
@@ -379,7 +379,7 @@
 										"typeProperties": {
 											"variableName": "TimeNow",
 											"value": {
-												"value": "@{formatDateTime(subtractFromTime(utcNow(), 300, 'Minute'), 'yyyyMMddHHmmss')}",
+												"value": "@{formatDateTime(subtractFromTime(utcNow(), 300, 'Minute'), 'yyyy-MM-dd HH:mm:ss.fff')}",
 												"type": "Expression"
 											}
 										}

@@ -1,0 +1,38 @@
+{
+	"name": "TriggerQuincenal",
+	"properties": {
+		"description": "Este Trigger actualiza la data cada 15 días calendario",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ControlCargas",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Proceso": "Lidertecnico",
+					"SistemaFuente": "SQL",
+					"Subproceso": "Subpr_2"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 15,
+				"startTime": "2023-06-24T22:23:00",
+				"timeZone": "SA Pacific Standard Time",
+				"schedule": {
+					"minutes": [
+						16
+					],
+					"hours": [
+						22
+					]
+				}
+			}
+		}
+	}
+}
