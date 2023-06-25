@@ -16,6 +16,15 @@
 		},
 		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 			"value": "/subscriptions/edff7a7d-111f-466f-9d0b-4f96151ffc5c/resourcegroups/ModernaRG01/providers/Microsoft.DataFactory/factories/ModernaDataFactory02/integrationruntimes/ArqIR02"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_Proceso": {
+			"value": "Lidertecnico"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_SistemaFuente": {
+			"value": "SQL"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_Subproceso": {
+			"value": "Subpr_2"
 		}
 	}
 }

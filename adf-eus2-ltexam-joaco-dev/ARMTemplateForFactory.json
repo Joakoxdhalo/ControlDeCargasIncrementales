@@ -22,6 +22,18 @@
 		"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/edff7a7d-111f-466f-9d0b-4f96151ffc5c/resourcegroups/ModernaRG01/providers/Microsoft.DataFactory/factories/ModernaDataFactory02/integrationruntimes/ArqIR02"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_Proceso": {
+			"type": "string",
+			"defaultValue": "Lidertecnico"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_SistemaFuente": {
+			"type": "string",
+			"defaultValue": "SQL"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_Subproceso": {
+			"type": "string",
+			"defaultValue": "Subpr_2"
 		}
 	},
 	"variables": {
@@ -840,6 +852,49 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TriggerQuincenal')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Este Trigger actualiza la data cada 15 días calendario",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ControlCargas",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"Proceso": "[parameters('TriggerQuincenal_properties_pl_ControlCargas_parameters_Proceso')]",
+							"SistemaFuente": "[parameters('TriggerQuincenal_properties_pl_ControlCargas_parameters_SistemaFuente')]",
+							"Subproceso": "[parameters('TriggerQuincenal_properties_pl_ControlCargas_parameters_Subproceso')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 15,
+						"startTime": "2023-06-25T22:16:00Z",
+						"timeZone": "UTC",
+						"schedule": {
+							"minutes": [
+								16
+							],
+							"hours": [
+								22
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ControlCargas')]"
+			]
 		}
 	]
 }

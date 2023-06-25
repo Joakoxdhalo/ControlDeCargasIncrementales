@@ -23,6 +23,18 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/edff7a7d-111f-466f-9d0b-4f96151ffc5c/resourcegroups/ModernaRG01/providers/Microsoft.DataFactory/factories/ModernaDataFactory02/integrationruntimes/ArqIR02"
 		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_Proceso": {
+			"type": "string",
+			"defaultValue": "Lidertecnico"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_SistemaFuente": {
+			"type": "string",
+			"defaultValue": "SQL"
+		},
+		"TriggerQuincenal_properties_pl_ControlCargas_parameters_Subproceso": {
+			"type": "string",
+			"defaultValue": "Subpr_2"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -61,6 +73,15 @@
 					},
 					"ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId": {
 						"value": "[parameters('ARQLR02-Shared_properties_typeProperties_linkedInfo_resourceId')]"
+					},
+					"TriggerQuincenal_properties_pl_ControlCargas_parameters_Proceso": {
+						"value": "[parameters('TriggerQuincenal_properties_pl_ControlCargas_parameters_Proceso')]"
+					},
+					"TriggerQuincenal_properties_pl_ControlCargas_parameters_SistemaFuente": {
+						"value": "[parameters('TriggerQuincenal_properties_pl_ControlCargas_parameters_SistemaFuente')]"
+					},
+					"TriggerQuincenal_properties_pl_ControlCargas_parameters_Subproceso": {
+						"value": "[parameters('TriggerQuincenal_properties_pl_ControlCargas_parameters_Subproceso')]"
 					}
 				}
 			},
