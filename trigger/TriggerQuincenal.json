@@ -4,7 +4,19 @@
 		"description": "Este Trigger actualiza la data cada 15 días calendario",
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ControlCargas",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Proceso": "Lidertecnico",
+					"SistemaFuente": "SQL",
+					"Subproceso": "Subpr_2"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
