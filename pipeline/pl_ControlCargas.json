@@ -92,7 +92,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "UPDATE conf.ControlCargas set ValorCampoDelta1 = '@{substring(variables('TimeNow'), 0, 8)}', ValorCampoDelta2 = '@{substring(variables('TimeNow'), 8, 6)}'\nWHERE PkControlCargas = '@{item().PkControlCargas}'\nAND Proceso = '@{item().Proceso}'\nAND Subproceso = '@{item().Subproceso}'\nAND SistemaFuente = '@{item().SistemaFuente}'",
+														"value": "UPDATE conf.ControlCargas set ValorCampoDelta1 = '@{variables('TimeNow')}'\n\nWHERE PkControlCargas = '@{item().PkControlCargas}'\nAND Proceso = '@{item().Proceso}'\nAND Subproceso = '@{item().Subproceso}'\nAND SistemaFuente = '@{item().SistemaFuente}'",
 														"type": "Expression"
 													}
 												}
