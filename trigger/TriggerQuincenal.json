@@ -22,8 +22,8 @@
 			"recurrence": {
 				"frequency": "Day",
 				"interval": 15,
-				"startTime": "2023-06-24T22:19:00Z",
-				"timeZone": "UTC",
+				"startTime": "2023-06-24T22:19:00",
+				"timeZone": "SA Pacific Standard Time",
 				"schedule": {
 					"minutes": [
 						16
